@@ -29,11 +29,15 @@ func UpdateUser(user *User, id int) error {
 	return err
 }
 
-func CheckUser(user *User) (int, error) {
+func CheckUser(user *User) (*User, error) {
 	o := orm.NewOrm()
 	var users []User
 	_, err := o.Raw("SELECT * FROM user WHERE username = ? && password = ?;", user.Username, user.Password).QueryRows(&users)
-	return len(users), err
+	if 0 == len(users) {
+		return nil, err
+	} else {
+		return &users[0], err
+	}
 }
 
 func GetOneUser(username string) (User, error) {

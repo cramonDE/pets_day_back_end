@@ -46,9 +46,9 @@ func (c *UserController) Patch() {
 func (c *UserController) CheckOne() {
 	var user Models.User
 	json.Unmarshal(c.Ctx.Input.RequestBody, &user)
-	lenOfuser, err := Models.CheckUser(&user)
+	returnUser, err := Models.CheckUser(&user)
 	if nil == err {
-		c.Data["json"] = lenOfuser
+		c.Data["json"] = returnUser
 	}
 	c.ServeJSON()
 }

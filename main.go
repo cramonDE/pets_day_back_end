@@ -1,7 +1,6 @@
 package main
 
 import (
-	Models "pets-day/models"
 	_ "pets-day/routers"
 
 	"github.com/astaxie/beego"
@@ -19,6 +18,6 @@ func init() {
 	database := beego.AppConfig.String("mysqldb")
 	dbConfig := user + ":" + password + "@/" + database
 	orm.RegisterDataBase("default", "mysql", dbConfig, 30)
-	Models.CreateDatabase()
-	Models.CreateInitialData()
+	// Models.CreateDatabase()
+	// Models.CreateInitialData()
 }
