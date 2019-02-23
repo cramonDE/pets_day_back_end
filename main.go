@@ -2,7 +2,7 @@ package main
 
 import (
 	_ "pets-day/routers"
-
+	// Models "pets-day/models"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql"
