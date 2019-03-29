@@ -9,13 +9,13 @@ type UploadHandlerController struct {
 }
 
 func (c *UploadHandlerController) Post() {
-	f, fh, err := c.GetFile("uploadFile")
+	f, fh, err := c.GetFile("emoji")
 	defer f.Close()
 	if err != nil {
 		c.Data["json"] = &map[string]interface{}{"path": "", "succ": false}
 		c.ServeJSON()
 	} else {
-		c.SaveToFile("uploadFile", "/Users/cramon/Desktop/"+fh.Filename)
+		c.SaveToFile("emoji", "static/img/"+fh.Filename)
 		c.Data["json"] = &map[string]interface{}{"path": "/static/img/" + fh.Filename, "succ": true}
 		c.ServeJSON()
 	}
